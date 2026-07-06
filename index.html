@@ -29,6 +29,20 @@
 
 .people .telugu{color:#6f0d15;font-weight:600;text-shadow:0 1px 0 #fff8e8}
 .events .telugu{color:#f0c96f;font-weight:600;text-shadow:0 2px 12px #000}
+
+@media(max-width:680px){
+#cover{overflow:hidden}
+.cover-frame:before,.cover-frame:after{content:"❧";letter-spacing:0;font-size:18px}
+.cover-frame:before{top:14px}
+.cover-frame:after{bottom:14px}
+.cover-copy{width:92%;padding:18px 14px}
+.cover-copy .telugu{font-size:15px;margin:0 0 10px}
+.cover-copy h1{font-size:clamp(54px,18vw,76px);line-height:.84;margin:18px 0}
+.cover-copy h3{font-size:10px;margin:0 0 20px}
+.seal{width:118px;height:118px;margin:22px auto 15px}
+.tap{font-size:10px;line-height:1.65;letter-spacing:.12em}
+.tap span{font-size:8px}
+}
 </style></head>
 <body class="locked"><audio id="music" loop preload="auto"><source src="assets/music.mp3" type="audio/mpeg"></audio>
 <section id="cover"><div class="cover-frame"></div><div class="cover-copy"><p class="telugu">శ్రీ గణేశాయ నమః</p><p class="eyebrow">YOU'RE INVITED</p><h1>Koushik <i>&</i> Mohana</h1><h3>18 · SEPTEMBER · 2026</h3><button id="open" class="seal" aria-label="Tap to open wedding invitation"><span class="seal-icon">❧</span><strong>TAP TO<br>OPEN</strong><span class="seal-arrow">↓</span></button><div class="tap">OPEN OUR WEDDING INVITATION<br><span>♫ MUSIC BEGINS AFTER YOU TAP</span></div></div></section>
