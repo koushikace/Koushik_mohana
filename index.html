@@ -43,7 +43,17 @@
 .tap{font-size:10px;line-height:1.65;letter-spacing:.12em}
 .tap span{font-size:8px}
 }
-</style></head>
+
+@media(max-width:680px){
+.people{background:#f4e4bd!important;color:#2b0b0d!important}
+.people .eyebrow{color:#7b171e!important;opacity:1!important;font-weight:700}
+.people h2{color:#351012!important;text-shadow:none!important}
+.people .person{background:rgba(255,248,226,.72)!important}
+.people .telugu{color:#74131c!important;opacity:1!important}
+.people h3{color:#5d1017!important;text-shadow:none!important}
+.people .person p{color:#321416!important;opacity:1!important}
+}
+.cover-frame{pointer-events:none!important}.cover-copy{position:relative;z-index:3}.seal{position:relative;z-index:5;-webkit-tap-highlight-color:transparent}</style></head>
 <body class="locked"><audio id="music" loop preload="auto"><source src="assets/music.mp3" type="audio/mpeg"></audio>
 <section id="cover"><div class="cover-frame"></div><div class="cover-copy"><p class="telugu">శ్రీ గణేశాయ నమః</p><p class="eyebrow">YOU'RE INVITED</p><h1>Koushik <i>&</i> Mohana</h1><h3>18 · SEPTEMBER · 2026</h3><button id="open" class="seal" aria-label="Tap to open wedding invitation"><span class="seal-icon">❧</span><strong>TAP TO<br>OPEN</strong><span class="seal-arrow">↓</span></button><div class="tap">OPEN OUR WEDDING INVITATION<br><span>♫ MUSIC BEGINS AFTER YOU TAP</span></div></div></section>
 <main>
@@ -62,7 +72,17 @@
 </main><button id="sound" aria-label="Toggle music">♫</button>
 <script>
 const q=s=>document.querySelector(s),music=q("#music"),cover=q("#cover");music.volume=.55;
-q("#open").onclick=async()=>{try{await music.play()}catch(e){}cover.classList.add("cover-open");document.body.classList.remove("locked");setTimeout(()=>cover.style.display="none",1100)};
+const openBtn=q("#open");let opening=false;
+function openInvitation(){
+if(opening)return;
+opening=true;
+cover.classList.add("cover-open");
+document.body.classList.remove("locked");
+setTimeout(()=>{cover.style.display="none";},1100);
+music.play().catch(()=>{});
+}
+openBtn.addEventListener("click",openInvitation);
+openBtn.addEventListener("touchend",e=>{e.preventDefault();openInvitation();},{passive:false});
 q("#sound").onclick=()=>music.paused?music.play().catch(()=>{}):music.pause();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("seen")}),{threshold:.18});document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
 const wedding=new Date("2026-09-18T09:30:00+05:30");function tick(){let t=Math.max(0,wedding-Date.now()),d=Math.floor(t/864e5);t%=864e5;let h=Math.floor(t/36e5);t%=36e5;let m=Math.floor(t/6e4);t%=6e4;let s=Math.floor(t/1e3);q("#days").textContent=String(d).padStart(2,"0");q("#hours").textContent=String(h).padStart(2,"0");q("#minutes").textContent=String(m).padStart(2,"0");q("#seconds").textContent=String(s).padStart(2,"0")}tick();setInterval(tick,1000);
